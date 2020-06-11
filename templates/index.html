@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+
+    <h1>Log in or register below</h1>
+    <form action="{{url_for('home')}}" method="post">
+        <input type="text" name="name" placeholder="Enter Username">
+        <input type="password" name="password" placeholder="Enter Password">
+        <button>Submit</button>
+    </form>
+
+    {% if error == 1 %}
+      <p>User already exists or Password is wrong</p>
+    {% endif %}
+
+  </body>
+</html>

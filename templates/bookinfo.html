@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Further Info</title>
+  </head>
+  <body>
+    <h1>Info</h1>
+      {% if book is not none %}
+        <ul>
+          <li>ISBN: {{book.isbn}}</li>
+          <li>Title: {{book.title}}</li>
+          <li>Author: {{book.author}}</li>
+          <li>Year: {{book.author}}</li>
+
+        </ul>
+
+        {% if reviews is not none %}
+          <h2>Goodreads Reviews</h2>
+          <ul>
+              <li>Number of Reviews: {{review_count}}</li>
+              <li>Average Scores: {{review_rating}}</li>
+          </ul>
+        {% endif %}
+
+        {% if userrev is none %}
+
+          <h2>Submit a Review</h2>
+          <form action="{{url_for('bookinfo',info_isbn=book.isbn)}}" method="post">
+              <input type="number" name="rating" placeholder="0-5">
+              <input type="text" name="review" placeholder="Write Review (optional)">
+              <button>Submit Review</button>
+          </form>
+
+
+        {% else %}
+          <h2>Your Review</h2>
+          <p>Score : {{userrev.rating}}</p>
+          <p>Review : <br> {{userrev.review}}</p>
+        {% endif %}
+
+      {% else %}
+        <p>Book not found.</p>
+      {% endif %}
+      <button><a href="\">Back</a></button>
+  </body>
+</html>
